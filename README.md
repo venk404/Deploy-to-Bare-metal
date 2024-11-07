@@ -41,10 +41,9 @@ This project is a simple Student Management API built using FastAPI. It allows f
   make Spin-vm
 ```
 
-4) ## "Rename the .env file from the Schema folder and also in the root directory"
+4) Rename the .env file from the Schema folder and also in the root directory
 
-5) ## "SSH into the Vagrant box after setting it up"
-
+5) SSH into the Vagrant box after setting it up"
 6) Navigate to the Restapi directory within the vagrant folder in root folder.
 ```bash
   cd ..
@@ -57,7 +56,7 @@ This project is a simple Student Management API built using FastAPI. It allows f
 ```bash
   make all
 ```
-8) ## You can access the application from outside the Vagrant box.
+## You can access the application from outside the Vagrant box.
 
 ```bash
   http://127.0.0.1:8080/docs
@@ -71,10 +70,9 @@ This project is a simple Student Management API built using FastAPI. It allows f
   http://127.0.0.1:8080/docs
 ```
 
-
-8) ## SRE Assignment Link(Deploy REST API & its dependent services on bare metal)
+## SRE Assignment Link(Deploy REST API & its dependent services on bare metal)
 
 ```bash
   https://one2n.io/sre-bootcamp/sre-bootcamp-exercises/5-deploy-rest-api-its-dependent-services-on-bare-metal
 ```
-![plot](deploy.webp)
+![image](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F9ce3a364-243d-4bf8-803e-331bbc517340%2F41791756-404b-4773-a7b2-f4767095d272%2Fvagrant-deployment.png?table=block&id=f93e1a64-1cf8-4fc6-beab-1ae82d71857c&cache=v2)
