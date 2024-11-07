@@ -3,13 +3,7 @@
 # Variables
 VENV := venv
 DB_SERVICE := postgres
-MIGRATION_DIR := ./DB/Schemas
-MIGRATION_IMAGE := migrations_img
-MIGRATION_CONTAINER := migrations_container
-NETWORK_NAME := dem
-API_IMAGE := restapi
-API_CONTAINER := restapi
-API_PORT := 8000
+API_IMAGE := restapi/restapi:v1
 
 # Determine OS-specific command prefix
 ifeq ($(OS),Windows_NT)
@@ -20,33 +14,28 @@ endif
 
 all: Run_all_containers
 
-
+#python linting
 Code_linting:
 	python -m flake8 .
 
+#Run all the services at once
 Run_all_containers:
 	docker-compose up
 
-Build_api:
+#Setup Vagrant box
+Spin-vm:
+	vagrant up
+
+Build:
 	$(CMD_PREFIX) echo "API build successful"
 
+#Run Postgres Services
 Start_DB:
 	$(CMD_PREFIX) docker-compose up $(DB_SERVICE)
 
-run-migrations:
-	$(CMD_PREFIX) docker build -t $(MIGRATION_IMAGE) $(MIGRATION_DIR)
-	$(CMD_PREFIX) docker run --rm --name $(MIGRATION_CONTAINER) --network $(NETWORK_NAME) $(MIGRATION_IMAGE)
-
-docker_build-api:
+#Build Api images
+docker_build:
 	$(CMD_PREFIX) docker build -t $(API_IMAGE) .
-
-docker_run-api:
-	$(CMD_PREFIX) docker run -d \
-		--name $(API_CONTAINER) \
-		--network $(NETWORK_NAME) \
-		-p $(API_PORT):$(API_PORT) \
-		$(API_IMAGE)
-
 
 install: $(VENV)/Scripts/activate
 
@@ -75,11 +64,4 @@ else
 	find . -type d -name "data" -exec rm -rf {} +
 endif
 
-test:
-ifeq ($(OS),Windows_NT)
-	python ./test/test.py
-else
-	python ./test/test.py
-endif
-
-.PHONY: all test clean Code_linting Run_all_containers Start_DB run-migrations Build-api docker_build-api docker_run-api
+.PHONY: all Spin-vm clean Code_linting Run_all_containers Start_DB  Build-api docker_build-api
