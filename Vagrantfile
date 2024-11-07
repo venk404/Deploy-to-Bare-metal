@@ -15,5 +15,5 @@ Vagrant.configure("2") do |config|
   
   # Provision the VM using setup script
 
- config.vm.provision "shell", path: "entry.sh"
+ config.vm.provision "shell", path: "setup.sh"
 end
