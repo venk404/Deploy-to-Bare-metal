@@ -70,3 +70,11 @@ This project is a simple Student Management API built using FastAPI. It allows f
 ```bash
   http://127.0.0.1:8080/docs
 ```
+
+
+8) ## SRE Assignment Link(Deploy REST API & its dependent services on bare metal)
+
+```bash
+  https://one2n.io/sre-bootcamp/sre-bootcamp-exercises/5-deploy-rest-api-its-dependent-services-on-bare-metal
+```
+![plot](deploy.webp)
